@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SchoolApp.Models.Students>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone_number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.student_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.student_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.student_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
